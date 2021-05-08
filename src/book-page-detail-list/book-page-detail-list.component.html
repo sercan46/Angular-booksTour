@@ -1,0 +1,28 @@
+<div class="container" *ngIf="bookDetail" style="background-color: darkgrey; margin-top: 40px; padding-bottom: 10px;border-radius: 15px;">
+	<div class="row" style="display: flex;justify-content: center;padding-bottom: 10px; padding-top: 10px;">
+		<h2  style="color: indigo;">{{bookDetail.title}}</h2>
+	</div>
+	
+	<div class="block" >
+      <div class="row"  style="justify-content: center;display: flex;">
+        <div class="span4">
+          <img class="img-left" [src]="bookDetail.book_image" style="width: 350px;height: 250px;"/>
+          <div class="content-heading"><h3 style="text-align: center;">Author: {{bookDetail.author}}</h3></div>
+          <p>Publisher: {{bookDetail.publisher}}</p>
+          <p>Contributor: {{bookDetail.contributor}}</p>
+          <p>Created Date: {{bookDetail.created_date | date:'dd.MM.YYYY hh:mm'}}</p>
+          <p>Updated Date: {{bookDetail.updated_date | date:'dd.MM.YYYY hh:mm'}}</p>
+
+        </div>
+     </div>
+     <br/>
+      <div class="row" style="display: flex; justify-content: space-between;padding-left: 15px; padding-right: 15px;">
+        <div class="span4" *ngFor="let buyLink of bookDetail.buy_links">
+          <button class="btn btn-success" (click)="openToDetail(buyLink.url)">
+              {{buyLink.name}}
+          </button>
+
+     </div>
+    </div>
+    
+</div>
